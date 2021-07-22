@@ -246,3 +246,6 @@ e2e-exec:
 e2e-destroy:
 	kind delete cluster --name capsule
 
+# Stratio CICD flow
+change-version:
+	@echo $(VERSION) > VERSION
