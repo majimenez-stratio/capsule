@@ -205,3 +205,7 @@ e2e/%:
 		./charts/capsule
 	ginkgo -v -tags e2e ./e2e
 	kind delete cluster --name capsule
+
+# Stratio CICD flow
+change-version:
+	@echo $(VERSION) > VERSION
