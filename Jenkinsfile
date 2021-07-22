@@ -9,7 +9,6 @@ hose {
     NEW_VERSIONING = 'true'
     DEVTIMEOUT = 30
     ANCHORE_POLICY = "production"
-    GO = "/usr/local/bin/go"
 
     DEV = { config ->
         doUT(config)
