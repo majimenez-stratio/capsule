@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (upcoming)
+## 0.1.0 (August 19, 2021)
 
 * Adapt to Stratio CICD flow
 * Add system-user-group as exception of capsule-user-group
