@@ -18,6 +18,7 @@ package webhook
 
 import (
 	"context"
+	"errors"
 	"io/ioutil"
 
 	admissionv1beta1 "k8s.io/api/admission/v1beta1"
@@ -28,10 +29,10 @@ import (
 )
 
 func Register(mgr controllerruntime.Manager, webhookList ...Webhook) error {
-	// skipping webhook setup if certificate is missing
+	// yield error if certificate is missing
 	dat, _ := ioutil.ReadFile("/tmp/k8s-webhook-server/serving-certs/tls.crt")
 	if len(dat) == 0 {
-		return nil
+		return errors.New("cannot register webhooks, certificate in /tmp/k8s-webhook-server/serving-certs/tls.crt not found")
 	}
 
 	s := mgr.GetWebhookServer()

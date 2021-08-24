@@ -2,7 +2,7 @@
 
 ## 0.2.0 (upcoming)
 
-* Pending changelog
+* [EOS-5172] Fix error 500
 
 ## 0.1.0-58f2647 (Built: August 19, 2021 | Pre-release)
 
