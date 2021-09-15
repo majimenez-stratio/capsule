@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (August 19, 2021)
+## 0.1.0 (September 15, 2021)
 
 * [EOS-5453] Solve anchore report vulnerabilities
 * [EOS-5172] Capsule error 500 when has deployed with more than one replica
