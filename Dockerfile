@@ -33,9 +33,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build \
 # Refer to https://github.com/GoogleContainerTools/distroless for more details
 FROM alpine:3.13
 # Upgrade packages to vulnerabilities
-RUN apk update && apk add \
-    apk-tools \
-    openssl
+RUN apk update && apk upgrade
 
 WORKDIR /
 COPY --from=builder /workspace/manager .
