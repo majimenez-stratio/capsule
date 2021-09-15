@@ -34,7 +34,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build \
 FROM alpine:3.13
 # Upgrade packages to vulnerabilities
 RUN apk update && apk add \
-    apk-tools && \
+    apk-tools \
     openssl
 
 WORKDIR /
