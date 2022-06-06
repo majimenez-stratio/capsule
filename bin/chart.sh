@@ -5,7 +5,7 @@ set -e
 # only exit with zero if all commands of the pipeline exit successfully
 set -o pipefail
 
-NAME="ingress-nginx"
+NAME="capsule"
 VERSION="${1}"
 echo VERSION: ${VERSION}
 echo "Building HELM3 chart for ${NAME} ${VERSION} version"
