@@ -10,5 +10,6 @@ hose {
 
     DEV = { config ->
         doDocker(conf:config, image:'capsule')
+        doHelmChart(conf: config, helmTarget: "chart")
     }
 }
