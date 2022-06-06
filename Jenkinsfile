@@ -7,6 +7,7 @@ hose {
     ANCHORE_POLICY = "production"
     VERSIONING_TYPE = 'stratioVersion-3-3'
     UPSTREAM_VERSION = '0.1.1'
+    DEPLOYONPRS = true
 
     DEV = { config ->
         doDocker(conf:config, image:'capsule')
