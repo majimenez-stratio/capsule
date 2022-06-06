@@ -78,8 +78,8 @@ func (h *handler) setOwnerRef(ctx context.Context, req admission.Request, client
 		}
 		// Tenant owner must adhere to user that asked for NS creation
 		log := ctrl.Log.WithName("STRATIO")
-		log.Info("req.UserInfo", req.UserInfo)
-		if !utils.IsTenantOwner(tnt.Spec.Owners, req.UserInfo) {
+		log.Info("STRATIO", "req.UserInfo", req.UserInfo)
+		if !utils.IsTenantOwner(tnt.Spec.Owners, req.UserInfo) && !(req.UserInfo.Username != "system:serviceaccount:capsule-system:capsule") {
 			recorder.Eventf(tnt, corev1.EventTypeWarning, "NonOwnedTenant", "Namespace %s cannot be assigned to the current Tenant", ns.GetName())
 
 			response := admission.Denied("Cannot assign the desired namespace to a non-owned Tenant")
