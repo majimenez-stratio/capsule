@@ -15,7 +15,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/client-go/tools/record"
-	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
@@ -28,14 +27,14 @@ import (
 )
 
 type handler struct {
-	cfg      configuration.Configuration
-	userName string
+	cfg             configuration.Configuration
+	capsuleUserName string
 }
 
-func Handler(cfg configuration.Configuration, userName string) capsulewebhook.Handler {
+func Handler(cfg configuration.Configuration, capsuleUserName string) capsulewebhook.Handler {
 	return &handler{
-		cfg:      cfg,
-		userName: userName,
+		cfg:             cfg,
+		capsuleUserName: capsuleUserName,
 	}
 }
 
@@ -79,9 +78,7 @@ func (h *handler) setOwnerRef(ctx context.Context, req admission.Request, client
 			return &response
 		}
 		// Tenant owner must adhere to user that asked for NS creation
-		log := ctrl.Log.WithName("STRATIO")
-		log.Info("STRATIO", "req.UserInfo", req.UserInfo)
-		if !utils.IsTenantOwner(tnt.Spec.Owners, req.UserInfo) && req.UserInfo.Username != h.userName {
+		if !utils.IsTenantOwner(tnt.Spec.Owners, req.UserInfo) && req.UserInfo.Username != h.capsuleUserName {
 			recorder.Eventf(tnt, corev1.EventTypeWarning, "NonOwnedTenant", "Namespace %s cannot be assigned to the current Tenant", ns.GetName())
 
 			response := admission.Denied("Cannot assign the desired namespace to a non-owned Tenant")
