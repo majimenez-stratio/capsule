@@ -131,6 +131,10 @@ func (c capsuleConfiguration) UserGroups() []string {
 	return c.retrievalFn().Spec.UserGroups
 }
 
+func (c capsuleConfiguration) ExcludeUserGroups() []string {
+	return c.retrievalFn().Spec.ExcludeUserGroups
+}
+
 func (c capsuleConfiguration) hasForbiddenNodeLabelsAnnotations() bool {
 	if _, ok := c.retrievalFn().Annotations[capsulev1alpha1.ForbiddenNodeLabelsAnnotation]; ok {
 		return true

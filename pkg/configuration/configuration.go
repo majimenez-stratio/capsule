@@ -27,6 +27,7 @@ type Configuration interface {
 	ValidatingWebhookConfigurationName() string
 	TenantCRDName() string
 	UserGroups() []string
+	ExcludeUserGroups() []string
 	ForbiddenUserNodeLabels() *capsulev1beta1.ForbiddenListSpec
 	ForbiddenUserNodeAnnotations() *capsulev1beta1.ForbiddenListSpec
 }
